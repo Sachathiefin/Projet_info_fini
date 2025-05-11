@@ -1,0 +1,13 @@
+Date;Heure;RefMachine;TypeEvenement;IdOperateur;Raison
+---------------
+20012025;06:42;Mach_5;A;OP102;panne
+20012025;07:34;Mach_3;A;OP110;panne
+20012025;11:40;Mach_5;D;OP213;ok
+20012025;12:18;Mach_2;A;OP103;accident
+20012025;13:25;Mach_4;A;OP221;maintenance
+20012025;15:12;Mach_3;D;OP123;ok
+20012025;16:27;Mach_4;D;OP114;ok
+15032025;16:36;Mach_5;A;OP320;panne
+15032025;18:20;Mach_5;D;OP210;ok
+02042025;18:35;Mach_1;A;OP321;panne
+02042025;19:32;Mach_1;D;OP102;ok
