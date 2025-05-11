@@ -1,0 +1,9 @@
+ID                   | Operations           | Duree     
+-------------------------------------------------------------
+Gamme2               | OP4                  | 1.0   
+Gamme10              | OP1                  | 4,00  
+Gamme1               | OP1, OP2             | 9.0              
+Gamme9               | OP1                  | 3,00         
+Gamme8               | OP3                  | 3,00      
+Gamme19              | OP5, OP6, OP4        | 4,80      
+Gamme15              | OP3, OP4             | 4,00      

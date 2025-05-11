@@ -1,0 +1,4 @@
+Code       | NOM             | Prenom          | Competences          | Disponibilite
+---------------------------------------------------------------------------------------                            
+DH43       | SO              | Kerrian         | Mathématicien        | Matin
+HJ78       | DUPONT          | Jean            | Soudeur              | Soir

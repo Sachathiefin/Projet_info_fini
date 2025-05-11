@@ -1,0 +1,8 @@
+ID              | Designation         | Type                | X    | Y    | Cout | Duree
+--------------------------------------------------------------------------------------------
+DF43            | USINAGE             | Découpage           | 3    | 13   | 320  | 12,00
+FG54            | USINAGE             | Pollissage          | 5    | 10   | 150  | 2,00
+AR71            | USINAGE             | Fraisage            | 4    | 20   | 500  | 10,00
+NG41            | USINAGE             | Assemblage          | 10   | 15   | 900  | 5,00
+ML09            | USINAGE             | Moulage             | 15   | 3    | 150  | 1,00
+

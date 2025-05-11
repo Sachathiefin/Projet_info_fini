@@ -1,0 +1,8 @@
+ID              | Designation               | Equipement                     | Duree (en h)   
+-------------------------------------------------------------------------------------------
+OP1             | USINE                     | DF43, ML09                     | 13,00
+OP2             | USINE                     | SCIE                           | 6,00
+OP3             | moulage                   | moule                          | 3,00
+OP4             | pollissage                | pollisseuse                    | 1,00
+OP7             | USINAGE                   | Machine8                       | 1,5               
+OP91            | Usinage                   | FG54, ML09                     | 3,00           

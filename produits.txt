@@ -1,0 +1,7 @@
+Produit              | Attributs                           | Gamme
+-------------------------------------------------------------------------
+Table                | Acier, 4 pieds                      | Gamme19
+Chaise               | Bois, 3 pieds                       | Gamme1    
+Bureau               | Bois, 5 tirroirs                    | Gamme2    
+Armoire              | 5 étages, acier                     | Gamme9           
+Bureau2              | Bois, 2 tirroires, angle            | Gamme1    
