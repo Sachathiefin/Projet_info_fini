@@ -94,7 +94,7 @@ public class Machine_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void afficherMachine(String id, String desi, String type, 
             String X, String Y, String cout, String duree) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("machine.txt", true))) {
@@ -104,7 +104,7 @@ public class Machine_interface {
             System.out.println("Erreur d'enregistrement : " + e.getMessage());
         }
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetremodifierMachine() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Modifier Machine");
@@ -214,7 +214,7 @@ public class Machine_interface {
         fenetre.show();
     
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean modifierMachine(String ancienid, String id, String desi, String type, 
             String X, String Y, String cout, String duree) {
         File file = new File("machine.txt");
@@ -248,7 +248,7 @@ public class Machine_interface {
 
         return modifie;
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetreSupprimerMachine() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Supprimer Machine");
@@ -312,7 +312,7 @@ public class Machine_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean supprimerMachine(String id) {
     File inputFile = new File("machine.txt");
     List<String> lignes = new ArrayList<>();

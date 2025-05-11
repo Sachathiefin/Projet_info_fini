@@ -62,7 +62,7 @@ public class stockBrut_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void afficherStock(String id, String quantite) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("stocksBruts.txt", true))) {
             writer.write(String.format("%-15s | %-10s", id, quantite));
@@ -71,7 +71,7 @@ public class stockBrut_interface {
             System.out.println("Erreur d'enregistrement : " + e.getMessage());
         }
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetremodifierStockBrut() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Modifier Stock Brut");
@@ -147,7 +147,7 @@ public class stockBrut_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean modifierStock(String ancienID, String nouvID, String nouvQuantite) {
         File file = new File("stocksBruts.txt");
         List<String> lignes = new ArrayList<>();
@@ -180,7 +180,7 @@ public class stockBrut_interface {
 
         return modifie;
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetreSupprimerStockBrut() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Supprimer Stock Brut");
@@ -244,7 +244,7 @@ public class stockBrut_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean supprimerStock(String id) {
     File inputFile = new File("stocksBruts.txt");
     List<String> lignes = new ArrayList<>();

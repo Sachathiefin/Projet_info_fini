@@ -130,7 +130,7 @@ public class Poste_interface {
     fenetre.setScene(scene);
     fenetre.show();
 }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void afficherPoste(String id, String desi, String listmachine) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("poste.txt", true))) {
             writer.write(String.format("%-15s | %-20s| %-30s", id, desi,listmachine));
@@ -139,7 +139,7 @@ public class Poste_interface {
             System.out.println("Erreur d'enregistrement : " + e.getMessage());
         }
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetremodifierPoste() {
     Stage fenetre = new Stage();
     fenetre.setTitle("Modifier Poste");
@@ -318,7 +318,7 @@ public class Poste_interface {
     fenetre.show();
 }
 
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean modifierPoste(String ancienid, String id, String desi, String list) {
         File file = new File("poste.txt");
         List<String> lignes = new ArrayList<>();
@@ -351,7 +351,7 @@ public class Poste_interface {
 
         return modifie;
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetreSupprimerPoste() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Supprimer Poste");
@@ -415,7 +415,7 @@ public class Poste_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean supprimerPoste(String id) {
     File inputFile = new File("poste.txt");
     List<String> lignes = new ArrayList<>();

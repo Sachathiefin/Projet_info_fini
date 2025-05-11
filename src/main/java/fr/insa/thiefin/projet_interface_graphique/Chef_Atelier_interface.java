@@ -74,7 +74,7 @@ public class Chef_Atelier_interface {
         fenetre.setScene(new Scene(vbox, 500, 500));
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void afficherChef(String id, String nom, String prenom, String spec) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("chefs.txt", true))) {
             writer.write(String.format("%-10s | %-15s | %-15s | %-20s", id, nom, prenom, spec));
@@ -83,7 +83,7 @@ public class Chef_Atelier_interface {
             System.out.println("Erreur d'enregistrement : " + e.getMessage());
         }
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetreModifierChef() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Modifier Chef d'Atelier");
@@ -172,7 +172,7 @@ public class Chef_Atelier_interface {
         fenetre.setScene(new Scene(vbox, 400, 400));
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     private static boolean modifierChef(String id,String newid, String nom, String prenom, String spec) {
         File inputFile = new File("chefs.txt");
         File tempFile = new File("chefs_temp.txt");
@@ -203,7 +203,7 @@ public class Chef_Atelier_interface {
 
         return modifie;
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetreSupprimerChef() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Supprimer Chef d'Atelier");
@@ -265,8 +265,8 @@ public class Chef_Atelier_interface {
         fenetre.setScene(new Scene(vbox, 300, 200));
         fenetre.show();
     }
-
-   public static boolean supprimerChef(String codeChef) {
+//-----------------------------------------------------------------------------------------------------------------
+   private static boolean supprimerChef(String codeChef) {
     File inputFile = new File("chefs.txt");
     List<String> lignes = new ArrayList<>();
     boolean Supprimer = false;

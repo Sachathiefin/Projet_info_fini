@@ -61,7 +61,7 @@ public class produits_finis_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void afficherProduitFini(String id, String quantite) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("produitsfinis.txt", true))) {
             writer.write(String.format("%-15s | %-10s", id, quantite));
@@ -70,7 +70,7 @@ public class produits_finis_interface {
             System.out.println("Erreur d'enregistrement : " + e.getMessage());
         }
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetremodifierProduitFini() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Modifier Produits Finis");
@@ -146,7 +146,7 @@ public class produits_finis_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean modifierProduitFini(String ancienID, String nouvID, String nouvQuantite) {
         File file = new File("produitsfinis.txt");
         List<String> lignes = new ArrayList<>();
@@ -179,7 +179,7 @@ public class produits_finis_interface {
 
         return modifie;
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static void fenetreSupprimerProduitFini() {
         Stage fenetre = new Stage();
         fenetre.setTitle("Supprimer produit finis");
@@ -243,7 +243,7 @@ public class produits_finis_interface {
         fenetre.setScene(scene);
         fenetre.show();
     }
-
+//-----------------------------------------------------------------------------------------------------------------
     public static boolean supprimerProduitFini(String id) {
     File inputFile = new File("produitsfinis.txt");
     List<String> lignes = new ArrayList<>();
