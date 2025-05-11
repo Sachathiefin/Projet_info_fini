@@ -47,7 +47,7 @@ public class Fiabilite_interface {
             if (ligne.trim().isEmpty()) continue;
 
             String[] elements = ligne.split(";");
-            if (elements.length != 6) continue;
+            if (elements.length != 6 || elements[0].equalsIgnoreCase("Date") || elements[0].startsWith("-")) continue;
 
             String heure = elements[1];
             String machine = elements[2];
