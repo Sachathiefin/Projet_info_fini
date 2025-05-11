@@ -11,8 +11,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -78,7 +80,10 @@ public class Gamme_interface {
     boutonValider.setOnAction(e -> {
     String nomGamme = champNom.getText().trim();
     String operationsTexte = champOperations.getText().trim();
-
+    //récupère la duree de la gamme
+    float duree = dureeGamme(operationsTexte);
+     String dureeStr = String.format("%.2f", duree).replace(".", ",");
+     
     if (nomGamme.isEmpty() || operationsTexte.isEmpty()) {
         Alert alerte = new Alert(Alert.AlertType.ERROR);
         alerte.setTitle("Champs manquants");
@@ -94,7 +99,7 @@ public class Gamme_interface {
     }
 
     // Si tout est bon, on affiche la gamme (ou on la crée)
-    afficheGamme(nomGamme, operationsTexte);
+    afficheGamme(nomGamme, operationsTexte, dureeStr);
 
     // Message de succès
     Alert succes = new Alert(Alert.AlertType.INFORMATION);
@@ -223,7 +228,7 @@ public class Gamme_interface {
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
-    public static void afficheGamme(String refGamme, String listOperation) {
+    public static void afficheGamme(String refGamme, String listOperation, String dureeStr) {
     try {
         BufferedWriter Gammelist = new BufferedWriter(new FileWriter("Gamme.txt", true));
         File file = new File("Gamme.txt");
@@ -235,8 +240,8 @@ public class Gamme_interface {
             Gammelist.newLine();
         }
 
-        float duree = dureeGamme(listOperation);
-        Gammelist.write(String.format("%-20s | %-20s | %-10.2f", refGamme, listOperation, duree));
+        
+        Gammelist.write(String.format("%-20s | %-20s | %-10s", refGamme, listOperation, dureeStr));
         Gammelist.newLine();
 
         Gammelist.close();
@@ -248,24 +253,24 @@ public class Gamme_interface {
     //-----------------------------------------------------------------------------------------------------------------------------------------
     public static float dureeGamme(String operationsTexte) {
     float dureeTotale = 0;
-    String[] operationsDemandées = operationsTexte.split(",");
+    String[] operationsDemandees = operationsTexte.split(",");
 
+    Map<String, Float> mapOperations = new HashMap<>();
     try (BufferedReader reader = new BufferedReader(new FileReader("operations.txt"))) {
         String ligne;
         while ((ligne = reader.readLine()) != null) {
-            for (String opDemandée : operationsDemandées) {
-                if (ligne.startsWith(opDemandée.trim())) {
-                    // Séparer les colonnes avec au moins deux espaces
-                    String[] colonnes = ligne.trim().split("\\s{2,}");
-                    if (colonnes.length >= 4) {
-                        String dureeStr = colonnes[3].replace(",", ".").trim(); // "3,00" → "3.00"
-                        try {
-                            float duree = Float.parseFloat(dureeStr);
-                            dureeTotale += duree;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Durée invalide pour " + opDemandée + ": " + dureeStr);
-                        }
-                    }
+            if (ligne.trim().isEmpty() || ligne.contains("ID") || ligne.contains("---")) continue;
+
+            // Si colonnes séparées par '|'
+            String[] colonnes = ligne.split("\\|");
+            if (colonnes.length >= 4) {
+                String idOp = colonnes[0].trim();
+                String dureeStr = colonnes[3].trim().replace(",", ".");
+                try {
+                    float duree = Float.parseFloat(dureeStr);
+                    mapOperations.put(idOp, duree);
+                } catch (NumberFormatException e) {
+                    System.out.println("Durée invalide pour " + idOp + ": " + dureeStr);
                 }
             }
         }
@@ -273,9 +278,18 @@ public class Gamme_interface {
         System.out.println("Erreur de lecture du fichier operations.txt : " + e.getMessage());
     }
 
+    // Calcul de la durée totale
+    for (String opDemandee : operationsDemandees) {
+        String opTrim = opDemandee.trim();
+        if (mapOperations.containsKey(opTrim)) {
+            dureeTotale += mapOperations.get(opTrim);
+        } else {
+            System.out.println("Opération non trouvée : " + opTrim);
+        }
+    }
+
     return dureeTotale;
 }
-
 //---------------------------------------------------------------------------------------------------------
     public static boolean supprimerGamme(String refGammeASupprimer) {
     File inputFile = new File("Gamme.txt");
