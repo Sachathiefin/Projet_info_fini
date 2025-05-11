@@ -55,16 +55,16 @@ public class Atelier_interface {
         conteneurPrincipal.getChildren().addAll(vboxOperateur, vboxChef, vboxstock, vboxprodfini);
 
         //creation des titre de chaque colones
-        Label operateur = new Label("Opérateurs");
+        Label operateur = new Label("👷 Opérateurs");
         operateur.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
         
-        Label chef = new Label("Chefs de l'atelier");
+        Label chef = new Label("👨‍💼 Chefs de l'atelier");
         chef.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-        Label Stock = new Label("Stock brut");
+        Label Stock = new Label("📦 Stock brut");
         Stock.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;"); 
         
-        Label prod = new Label("Produits finis");
+        Label prod = new Label("✅ Produits finis");
         prod.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;"); 
         
         

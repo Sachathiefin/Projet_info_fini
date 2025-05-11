@@ -48,13 +48,13 @@ public class Equipement_interface {
         conteneurPrincipal.getChildren().addAll(vboxMachine, vboxPoste, vboxSuivis);
 
         //creation des titre de chaque colones
-        Label Machine = new Label("Machine");
+        Label Machine = new Label("⚙️ Machine");
         Machine.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
         
-        Label Poste = new Label("Poste");
+        Label Poste = new Label("🪑 Poste");
         Poste.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-        Label Suivis = new Label("Suivi de la maintenance");
+        Label Suivis = new Label("📈 Suivi de la maintenance");
         Suivis.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;"); 
         
         
