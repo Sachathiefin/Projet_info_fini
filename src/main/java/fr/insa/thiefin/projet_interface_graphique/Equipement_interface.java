@@ -5,6 +5,7 @@
 package fr.insa.thiefin.projet_interface_graphique;
 
 
+import static fr.insa.thiefin.projet_interface_graphique.Fiabilite_interface.afficherFiabilite;
 import static fr.insa.thiefin.projet_interface_graphique.Machine_interface.fenetreSupprimerMachine;
 import static fr.insa.thiefin.projet_interface_graphique.Machine_interface.fenetrecreerMachine;
 import static fr.insa.thiefin.projet_interface_graphique.Machine_interface.fenetremodifierMachine;
@@ -78,17 +79,17 @@ public class Equipement_interface {
         Button boutonSupPoste = new Button("Supprimer");
         boutonSupPoste.setOnAction(e ->fenetreSupprimerPoste());
         
-        Button boutonSuivisMaintenance = new Button("Ajouter");
-        //boutonSuivisMaintenance.setOnAction(e ->fenetrecreerStockBrut() );
-        
+         Button boutonFiabilite = new Button("Afficher fiabilité");
+        boutonFiabilite.setOnAction(e -> afficherFiabilite());
+
         vboxMachine.getChildren().addAll(Machine, boutoncreerMachine, boutonmodifMachine, boutonsupMachine);
         vboxPoste.getChildren().addAll(Poste, boutoncreerPoste, boutonModifPoste, boutonSupPoste);
-        vboxSuivis.getChildren().addAll(Suivis, boutonSuivisMaintenance);
-      
-        // Création et affichage de la scène
+        vboxSuivis.getChildren().addAll(Suivis, boutonFiabilite);
+
         Scene scene = new Scene(conteneurPrincipal, 800, 400);
         fenetre.setScene(scene);
         fenetre.show();
+        
+       }
 }
-    
-}
+  
