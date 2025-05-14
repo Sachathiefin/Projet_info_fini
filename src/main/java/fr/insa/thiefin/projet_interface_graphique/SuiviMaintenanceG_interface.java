@@ -32,10 +32,10 @@ public class SuiviMaintenanceG_interface {
         titre.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 
         TextField tfDate = new TextField();
-        tfDate.setPromptText("Date (JJMMAAAA)");
+        tfDate.setPromptText("Date");
 
         TextField tfHeure = new TextField();
-        tfHeure.setPromptText("Heure (HH:mm)");
+        tfHeure.setPromptText("Heure");
 
         TextField tfMachine = new TextField();
         tfMachine.setPromptText("Nom machine");
@@ -48,7 +48,7 @@ public class SuiviMaintenanceG_interface {
         tfOperateur.setPromptText("ID Opérateur");
 
         TextField tfRaison = new TextField();
-        tfRaison.setPromptText("Raison");
+        tfRaison.setPromptText("Raison (panne, ok ou arret)");
 
         HBox boutons = new HBox(15);
         boutons.setAlignment(Pos.CENTER);
@@ -61,21 +61,51 @@ public class SuiviMaintenanceG_interface {
         Label feedback = new Label();
 
         ajouter.setOnAction(e -> {
-            String ligne = tfDate.getText() + ";" + tfHeure.getText() + ";" + tfMachine.getText() + ";" +
+            String nouvelleLigne = tfDate.getText() + ";" + tfHeure.getText() + ";" + tfMachine.getText() + ";" +
                     cbType.getValue() + ";" + tfOperateur.getText() + ";" + tfRaison.getText();
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("suiviMaintenance.txt", true))) {
-                writer.write(ligne);
-                writer.newLine();
-                feedback.setText("Ligne ajoutée.");
+            File fichier = new File("suiviMaintenance.txt");
+            List<String> lignes = new ArrayList<>();
+            boolean insere = false;
+            try (BufferedReader reader = new BufferedReader(new FileReader(fichier))) {
+                String ligne;
+                boolean enteteTrouvee = false;
+                while ((ligne = reader.readLine()) != null) {
+                    if (!enteteTrouvee && ligne.toLowerCase().startsWith("date")) {
+                        lignes.add(ligne);
+                        enteteTrouvee = true;
+                        continue;
+                    }
+                    if (ligne.startsWith("-") && enteteTrouvee) {
+                        lignes.add(ligne);
+                        lignes.add(nouvelleLigne); // Insérer après l'entête
+                        insere = true;
+                        continue;
+                    }
+                    lignes.add(ligne);
+                }
             } catch (IOException ex) {
-                feedback.setText("Erreur : " + ex.getMessage());
+                feedback.setText("Erreur lecture : " + ex.getMessage());
+                return;
+            }
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fichier))) {
+                for (String l : lignes) {
+                    writer.write(l);
+                    writer.newLine();
+                }
+                if (!insere) {
+                    writer.write(nouvelleLigne);
+                    writer.newLine();
+                }
+                feedback.setText("Ligne insérée.");
+            } catch (IOException ex) {
+                feedback.setText("Erreur écriture : " + ex.getMessage());
             }
         });
 
         modifier.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Modifier");
-            dialog.setHeaderText("Indiquer la date et l'heure exactes (JJMMAAAA;HH:mm) de la ligne à modifier :");
+            dialog.setHeaderText("Indiquer la date et l'heure exactes (date;heure) de la ligne à modifier :");
             dialog.setContentText("Clé :");
             dialog.showAndWait().ifPresent(cle -> {
                 String ligneModifiee = tfDate.getText() + ";" + tfHeure.getText() + ";" + tfMachine.getText() + ";" +
@@ -101,7 +131,7 @@ public class SuiviMaintenanceG_interface {
                     }
                     feedback.setText("Ligne modifiée.");
                 } catch (IOException ex) {
-                    feedback.setText("Erreur : " + ex.getMessage());
+                    feedback.setText("rreur : " + ex.getMessage());
                 }
             });
         });
