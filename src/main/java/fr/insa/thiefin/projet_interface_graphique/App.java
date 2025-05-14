@@ -86,7 +86,7 @@ public class App extends Application {
     boutonAfficherProduitFinis.setOnAction(e -> afficherContenuFichier("produitsfinis.txt", "Produits finis"));
     boutonAfficherPoste.setOnAction(e -> afficherContenuFichier("poste.txt", "Poste"));
     boutonAfficherMachine.setOnAction(e -> afficherContenuFichier("machine.txt", "Machine"));
-    boutonAfficherSuivis.setOnAction(e -> afficherContenuFichier("suivis.txt", "Suivis"));
+    boutonAfficherSuivis.setOnAction(e -> afficherContenuFichier("suiviMaintenance.txt", "Suivi Maintenance"));
 
     // Uniformiser la largeur des boutons
     Button[] tousLesBoutons = {
