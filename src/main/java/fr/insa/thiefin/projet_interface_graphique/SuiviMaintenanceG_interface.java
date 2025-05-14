@@ -48,7 +48,7 @@ public class SuiviMaintenanceG_interface {
         tfOperateur.setPromptText("ID Opérateur");
 
         TextField tfRaison = new TextField();
-        tfRaison.setPromptText("Raison (panne, ok ou arret)");
+        tfRaison.setPromptText("Raison (panne, ok, maintenance ou accident)");
 
         HBox boutons = new HBox(15);
         boutons.setAlignment(Pos.CENTER);
@@ -131,7 +131,7 @@ public class SuiviMaintenanceG_interface {
                     }
                     feedback.setText("Ligne modifiée.");
                 } catch (IOException ex) {
-                    feedback.setText("rreur : " + ex.getMessage());
+                    feedback.setText("Erreur : " + ex.getMessage());
                 }
             });
         });
@@ -139,7 +139,7 @@ public class SuiviMaintenanceG_interface {
         supprimer.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Suppression");
-            dialog.setHeaderText("Indiquer la date et l'heure exactes (JJMMAAAA;HH:mm) de la ligne à supprimer :");
+            dialog.setHeaderText("Indiquer la date et l'heure exactes (date;heure) de la ligne à supprimer :");
             dialog.setContentText("Clé :");
             dialog.showAndWait().ifPresent(cle -> {
                 try {
