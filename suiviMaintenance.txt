@@ -11,3 +11,4 @@ Date;Heure;RefMachine;TypeEvenement;IdOperateur;Raison
 15032025;18:20;Mach_5;D;OP210;ok
 02042025;18:35;Mach_1;A;OP321;panne
 02042025;19:32;Mach_1;D;OP102;ok
+24022025;14:53;Mach_3;A;DH43;panne
