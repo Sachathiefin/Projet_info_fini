@@ -97,7 +97,7 @@ public class Machine_interface {
 //-----------------------------------------------------------------------------------------------------------------
     public static void afficherMachine(String id, String desi, String type, 
             String X, String Y, String cout, String duree) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("machines.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("machine.txt", true))) {
             writer.write(String.format("%-15s | %-20s| %-20s| %-5s| %-5s| %-7s| %-7s", id, desi,type,X,Y,cout,duree));
             writer.newLine();
         } catch (IOException e) {
@@ -179,7 +179,7 @@ public class Machine_interface {
             textArea.setEditable(false);
             textArea.setStyle("-fx-font-family: 'monospace';");
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("machines.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("machine.txt"))) {
                 String ligne;
                 while ((ligne = reader.readLine()) != null) {
                     textArea.appendText(ligne + "\n");
@@ -286,7 +286,7 @@ public class Machine_interface {
             textArea.setEditable(false);
             textArea.setStyle("-fx-font-family: 'monospace';");
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("machines.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("machine.txt"))) {
                 String ligne;
                 while ((ligne = reader.readLine()) != null) {
                     textArea.appendText(ligne + "\n");
@@ -314,7 +314,7 @@ public class Machine_interface {
     }
 //-----------------------------------------------------------------------------------------------------------------
     public static boolean supprimerMachine(String id) {
-    File inputFile = new File("machines.txt");
+    File inputFile = new File("machine.txt");
     List<String> lignes = new ArrayList<>();
     boolean Supprimer = false;
 
