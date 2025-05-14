@@ -1,0 +1,7 @@
+refMachine;dMachine;typeMachine;x;y;Coût;Durée
+---------------------
+00002;MachineDecoupe;Mach_1;10;160;12,60;2,5
+00003;MachineLaser;Mach_5;20;160;20,50;3,5
+00004;MachineAssemblage;Mach_2;90;10;11,80;2,0
+00005;Scie;Mach_3;60;90;16,00;2,5
+00006;Perceuse;Mach_4;100;15;9,50;1,0
