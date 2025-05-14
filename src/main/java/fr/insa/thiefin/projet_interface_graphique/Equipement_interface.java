@@ -12,6 +12,7 @@ import static fr.insa.thiefin.projet_interface_graphique.Machine_interface.fenet
 import static fr.insa.thiefin.projet_interface_graphique.Poste_interface.fenetreSupprimerPoste;
 import static fr.insa.thiefin.projet_interface_graphique.Poste_interface.fenetrecreerPoste;
 import static fr.insa.thiefin.projet_interface_graphique.Poste_interface.fenetremodifierPoste;
+import static fr.insa.thiefin.projet_interface_graphique.SuiviMaintenanceG_interface.fenetreSuiviMaintenance;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -79,8 +80,8 @@ public class Equipement_interface {
         Button boutonSupPoste = new Button("Supprimer");
         boutonSupPoste.setOnAction(e ->fenetreSupprimerPoste());
         
-         Button boutonFiabilite = new Button("Afficher fiabilité");
-        boutonFiabilite.setOnAction(e -> afficherFiabilite());
+         Button boutonFiabilite = new Button("Gérer le suivi des maintenances");
+        boutonFiabilite.setOnAction(e -> fenetreSuiviMaintenance());
 
         vboxMachine.getChildren().addAll(Machine, boutoncreerMachine, boutonmodifMachine, boutonsupMachine);
         vboxPoste.getChildren().addAll(Poste, boutoncreerPoste, boutonModifPoste, boutonSupPoste);
