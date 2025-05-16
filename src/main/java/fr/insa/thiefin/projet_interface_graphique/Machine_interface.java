@@ -14,6 +14,10 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class Machine_interface {
 
@@ -33,11 +37,11 @@ public class Machine_interface {
         TextField champType = new TextField();
         champType.setPromptText("Ex : Découpage,...");
         
-        Label labelcoordX = new Label("Position en X :");
+        Label labelcoordX = new Label("Position en X <120 :");
         TextField champX = new TextField();
         champX.setPromptText("Ex : 10");
         
-        Label labelcoordY = new Label("Position en Y :");
+        Label labelcoordY = new Label("Position en Y <100 :");
         TextField champY = new TextField();
         champY.setPromptText("Ex : 15");
         
@@ -125,11 +129,11 @@ public class Machine_interface {
         TextField champType = new TextField();
         champType.setPromptText("Ex : Découpage,...");
         
-        Label labelcoordX = new Label("Position en X :");
+        Label labelcoordX = new Label("Position en X <120:");
         TextField champX = new TextField();
         champX.setPromptText("Ex : 10");
         
-        Label labelcoordY = new Label("Position en Y :");
+        Label labelcoordY = new Label("Position en Y <100 :");
         TextField champY = new TextField();
         champY.setPromptText("Ex : 15");
         
@@ -363,4 +367,49 @@ public class Machine_interface {
 
     return true;
 }  
+    
+//-----------------------------------------------------------------------------------------------------------------
+    
+//Ouvre une fenêtre “plan” avec un rectangle par machine positionné selon les coordonnées lues dans machine.txt
+public static void afficherPlanMachine() {
+    Stage fenetre = new Stage();
+    fenetre.setTitle("Plan des machines");
+
+    Pane pane = new Pane();
+    double scale = 4; // Réduction d’échelle pour affichage correct
+
+    try (BufferedReader reader = new BufferedReader(new FileReader("machine.txt"))) {
+        String ligne;
+
+        while ((ligne = reader.readLine()) != null) {
+            // Ignorer les lignes de séparation ou les lignes vides
+            if (ligne.trim().isEmpty() || ligne.contains("----") || ligne.toLowerCase().contains("designation")) {
+                continue;
+            }
+
+            // Découper par le séparateur "|"
+            String[] parts = ligne.split("\\|");
+
+            if (parts.length >= 6) {
+                String id = parts[0].trim();
+                double x = Double.parseDouble(parts[3].trim()) * scale;
+                double y = Double.parseDouble(parts[4].trim()) * scale;
+
+                Rectangle r = new Rectangle(x, y, 40, 30);
+                r.setFill(Color.LIGHTGRAY);
+                r.setStroke(Color.BLACK);
+
+                Text label = new Text(x + 5, y + 15, id);
+
+                pane.getChildren().addAll(r, label);
+            }
+        }
+    } catch (IOException | NumberFormatException e) {
+        e.printStackTrace();
+    }
+
+    Scene scene = new Scene(pane, 800, 600);
+    fenetre.setScene(scene);
+    fenetre.show();
+}
 }

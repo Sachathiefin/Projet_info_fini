@@ -1,7 +1,7 @@
 ID     | Designation   | Type               | X   | Y   | Cout  | Duree
 -----------------------------------------------------------------------
-00002  | Mach_1        | MachineDecoupe     | 10  | 160 | 12,60 | 2,50
-00003  | Mach_5        | MachineLaser       | 20  | 160 | 20,50 | 3,50
+00002  | Mach_1        | MachineDecoupe     | 10  | 10  | 12,60 | 2,50
+00003  | Mach_5        | MachineLaser       | 20  | 16  | 20,50 | 3,50
 00004  | Mach_2        | MachineAssemblage  | 90  | 10  | 11,80 | 2,00
 00005  | Mach_3        | Scie               | 60  | 90  | 16,00 | 2,50
 00006  | Mach_4        | Perceuse           | 100 | 15  | 9,50  | 1,00

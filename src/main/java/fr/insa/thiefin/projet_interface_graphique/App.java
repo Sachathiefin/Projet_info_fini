@@ -4,6 +4,7 @@ package fr.insa.thiefin.projet_interface_graphique;
 import static fr.insa.thiefin.projet_interface_graphique.Atelier_interface.fenetreAtelier;
 import static fr.insa.thiefin.projet_interface_graphique.Equipement_interface.fenetreEquipement;
 import static fr.insa.thiefin.projet_interface_graphique.Gamme_interface.fenetreGamme;
+import static fr.insa.thiefin.projet_interface_graphique.Machine_interface.afficherPlanMachine;
 import static fr.insa.thiefin.projet_interface_graphique.Operation_interface.fenetreOperation;
 import static fr.insa.thiefin.projet_interface_graphique.Produit_interface.fenetreProduit;
 import java.io.BufferedReader;
@@ -85,7 +86,8 @@ public class App extends Application {
     boutonAfficherStock.setOnAction(e -> afficherContenuFichier("stocksBruts.txt", "Stock brut"));
     boutonAfficherProduitFinis.setOnAction(e -> afficherContenuFichier("produitsfinis.txt", "Produits finis"));
     boutonAfficherPoste.setOnAction(e -> afficherContenuFichier("poste.txt", "Poste"));
-    boutonAfficherMachine.setOnAction(e -> afficherContenuFichier("machine.txt", "Machine"));
+    boutonAfficherMachine.setOnAction(e ->{afficherContenuFichier("machine.txt", "Machine");
+                                           afficherPlanMachine();});
     boutonAfficherSuivis.setOnAction(e -> afficherContenuFichier("suiviMaintenance.txt", "Suivi Maintenance"));
 
     // Uniformiser la largeur des boutons
