@@ -135,9 +135,9 @@ public class suiviMaintenance {
                             writer.newLine();
                         }
                     }
-                    feedback.setText("✏️ Ligne modifiée.");
+                    feedback.setText("Ligne modifiée.");
                 } catch (IOException ex) {
-                    feedback.setText("❌ Erreur : " + ex.getMessage());
+                    feedback.setText("Erreur : " + ex.getMessage());
                 }
             });
         });
@@ -165,16 +165,16 @@ public class suiviMaintenance {
                             writer.newLine();
                         }
                     }
-                    feedback.setText("🗑️ Ligne supprimée.");
+                    feedback.setText("Ligne supprimée.");
                 } catch (IOException ex) {
-                    feedback.setText("❌ Erreur : " + ex.getMessage());
+                    feedback.setText("Erreur : " + ex.getMessage());
                 }
             });
         });
 
         genererFiabilite.setOnAction(e -> {
             suiviMaintenance("suiviMaintenance.txt");
-            feedback.setText("📈 Fiabilité calculée et enregistrée dans fiabilite_machines.txt");
+            feedback.setText("Fiabilité calculée et enregistrée dans fiabilite_machines.txt");
         });
 
         root.getChildren().addAll(titre, tfDate, tfHeure, tfMachine, cbType, tfOperateur, tfRaison, boutons, feedback);
