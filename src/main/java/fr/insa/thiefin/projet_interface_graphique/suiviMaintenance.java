@@ -5,7 +5,6 @@
 package fr.insa.thiefin.projet_interface_graphique;
 import java.io.*;
 import java.util.*;
-
 /**
  *
  * @author sinsm
@@ -89,5 +88,5 @@ public class suiviMaintenance {
             return 0;
         }
  
-    }
+    }    
 }
