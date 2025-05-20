@@ -76,6 +76,7 @@ public class App extends Application {
     Button boutonAfficherPoste = new Button("🪑 Poste");
     Button boutonAfficherMachine = new Button("🔩 Machine");
     Button boutonAfficherSuivis = new Button("📈 Suivis");
+    Button boutonAfficherFiabilite = new Button("Fiabilité");
 
     // Actions
     boutonAfficherProduit.setOnAction(e -> afficherContenuFichier("produits.txt", "Produit"));
@@ -89,6 +90,8 @@ public class App extends Application {
     boutonAfficherMachine.setOnAction(e ->{afficherContenuFichier("machine.txt", "Machine");
                                            afficherPlanMachine();});
     boutonAfficherSuivis.setOnAction(e -> afficherContenuFichier("suiviMaintenance.txt", "Suivi Maintenance"));
+    boutonAfficherFiabilite.setOnAction(e-> afficherContenuFichier("fiabilite_machines.txt", "Fiabilité"));
+
 
     // Uniformiser la largeur des boutons
     Button[] tousLesBoutons = {
