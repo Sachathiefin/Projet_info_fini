@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class suiviMaintenance {
 
-// Classe pour stocker les données de chaque machine
+    // Classe pour stocker les données de chaque machine
     static class StatMachine {
         float tempsArret = 0;
         String dernierArret = null;
@@ -27,7 +27,7 @@ public class suiviMaintenance {
                 if (ligne.trim().isEmpty()) continue;
 
                 String[] elements = ligne.split(";");
-                if (elements.length != 6) continue;
+                if (elements.length != 6 || elements[0].equalsIgnoreCase("Date") || elements[0].startsWith("-")) continue;
 
                 String date = elements[0];
                 String heure = elements[1];
@@ -37,9 +37,9 @@ public class suiviMaintenance {
                 // Récupérer ou créer les stats de la machine
                 StatMachine stat = stats.getOrDefault(machine, new StatMachine());
 
-                if (type.equals("A")) {
+                if (type.equalsIgnoreCase("A")) {
                     stat.dernierArret = heure;
-                } else if (type.equals("D") && stat.dernierArret != null) {
+                } else if (type.equalsIgnoreCase("D") && stat.dernierArret != null) {
                     float duree = calculerDuree(stat.dernierArret, heure);
                     stat.tempsArret += duree;
                     stat.dernierArret = null;
@@ -54,7 +54,7 @@ public class suiviMaintenance {
         }
 
         // Calcul de la fiabilité
-        float dureeTotale = (float) 14.0; // de 06h00 à 20h00
+        float dureeTotale = 14.0f; // de 06h00 à 20h00
 
         Map<String, Float> fiabilites = new HashMap<>();
         for (Map.Entry<String, StatMachine> entry : stats.entrySet()) {
@@ -67,26 +67,40 @@ public class suiviMaintenance {
         List<Map.Entry<String, Float>> classement = new ArrayList<>(fiabilites.entrySet());
         classement.sort((a, b) -> Float.compare(b.getValue(), a.getValue()));
 
-        // Affichage
+        // Affichage console
         System.out.println("----- Fiabilité des machines -----");
-        for (Map.Entry<String, Float> entry : classement) {
-            float pourcentage = Math.round(entry.getValue() * 10000) / (float) 100.0;
-            System.out.println("Machine " + entry.getKey() + " : " + pourcentage + "% de fiabilité");
+
+        // Écriture dans un fichier texte
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("fiabilite_machines.txt"))) {
+            writer.write("Machine       | Fiabilité (%)");
+            writer.newLine();
+            writer.write("-----------------------------");
+            writer.newLine();
+
+            for (Map.Entry<String, Float> entry : classement) {
+                float pourcentage = Math.round(entry.getValue() * 10000) / 100.0f;
+                String ligne = String.format("%-13s | %-13.2f", entry.getKey(), pourcentage);
+                System.out.println("Machine " + entry.getKey() + " : " + pourcentage + "% de fiabilité");
+                writer.write(ligne);
+                writer.newLine();
+            }
+
+            System.out.println("Fichier fiabilite_machines.txt généré avec succès.");
+        } catch (IOException e) {
+            System.out.println("Erreur lors de l'écriture du fichier de fiabilité : " + e.getMessage());
         }
     }
 
-    //Calcul de la durée entre deux heures
+    // Calcul de la durée entre deux heures
     static float calculerDuree(String debut, String fin) {
         try {
             int h1 = Integer.parseInt(debut.substring(0, 2));
             int m1 = Integer.parseInt(debut.substring(3, 5));
             int h2 = Integer.parseInt(fin.substring(0, 2));
             int m2 = Integer.parseInt(fin.substring(3, 5));
-
-            return (float) (((h2 * 60 + m2) - (h1 * 60 + m1)) /60.0);
+            return (float) (((h2 * 60 + m2) - (h1 * 60 + m1)) / 60.0);
         } catch (NumberFormatException e) {
             return 0;
         }
- 
-    }    
+    }
 }
