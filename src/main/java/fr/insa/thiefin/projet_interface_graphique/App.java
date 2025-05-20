@@ -7,6 +7,7 @@ import static fr.insa.thiefin.projet_interface_graphique.Gamme_interface.fenetre
 import static fr.insa.thiefin.projet_interface_graphique.Machine_interface.afficherPlanMachine;
 import static fr.insa.thiefin.projet_interface_graphique.Operation_interface.fenetreOperation;
 import static fr.insa.thiefin.projet_interface_graphique.Produit_interface.fenetreProduit;
+import static fr.insa.thiefin.projet_interface_graphique.suiviMaintenance.afficherFiabilite;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -90,7 +91,7 @@ public class App extends Application {
     boutonAfficherMachine.setOnAction(e ->{afficherContenuFichier("machine.txt", "Machine");
                                            afficherPlanMachine();});
     boutonAfficherSuivis.setOnAction(e -> afficherContenuFichier("suiviMaintenance.txt", "Suivi Maintenance"));
-    boutonAfficherFiabilite.setOnAction(e-> afficherContenuFichier("fiabilite_machines.txt", "Fiabilité"));
+    boutonAfficherFiabilite.setOnAction(e-> afficherFiabilite());
 
 
     // Uniformiser la largeur des boutons
