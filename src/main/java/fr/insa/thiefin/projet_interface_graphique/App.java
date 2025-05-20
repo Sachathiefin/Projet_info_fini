@@ -97,7 +97,7 @@ public class App extends Application {
     Button[] tousLesBoutons = {
         boutonAfficherProduit, boutonAfficherGamme,
         boutonAfficherOperation, boutonAfficherOperateur, boutonAfficherChefs, boutonAfficherStock,
-        boutonAfficherProduitFinis, boutonAfficherPoste, boutonAfficherMachine, boutonAfficherSuivis
+        boutonAfficherProduitFinis, boutonAfficherPoste, boutonAfficherMachine, boutonAfficherSuivis, boutonAfficherFiabilite
     };
     for (Button b : tousLesBoutons) {
         b.setPrefWidth(200);
